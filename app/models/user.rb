@@ -27,8 +27,8 @@ class User < ApplicationRecord
   end
   
   # have機能
-  has_many :haves
-  has_many :have_items, through: :haves, class_name: 'Item', source: item
+  has_many :haves, class_name: 'Have'
+  has_many :have_items, through: :haves, class_name: 'Item', source: :item
   
   def have(item)
     self.haves.find_or_create_by(item_id: item.id)
